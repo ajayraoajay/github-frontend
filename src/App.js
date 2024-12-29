@@ -4,6 +4,8 @@ import UserSearch from "./components/UserSearch";
 import RepositoryList from "./components/RepositoryList";
 import RepositoryDetails from "./components/RepositoryDetails";
 import FollowersList from "./components/FollowersList";
+import "./App.css";
+
 
 const App = () => {
     const [user, setUser] = useState(null);
@@ -44,6 +46,7 @@ const App = () => {
                         setView("details");
                     }}
                     onFollowersClick={() => setView("followers")}
+                    
                 />
             );
         case "details":

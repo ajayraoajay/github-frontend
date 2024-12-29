@@ -2,10 +2,8 @@ import React from "react";
 
 const RepositoryDetails = ({ repo, onBack }) => {
     return (
-        <div style={{ padding: "20px" }}>
-            <button onClick={onBack} style={{ marginBottom: "20px" }}>
-                Back 
-            </button>
+        <div className="container">
+            <button onClick={onBack}>Back to Repositories</button>
             <h2>{repo.name}</h2>
             <p>{repo.description || "No description available"}</p>
             <p>
