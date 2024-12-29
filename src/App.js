@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import UserSearch from "./components/UserSearch";
+import RepositoryList from "./components/RepositoryList";
+import RepositoryDetails from "./components/RepositoryDetails";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [user, setUser] = useState(null);
+    const [selectedRepo, setSelectedRepo] = useState(null);
+
+    if (selectedRepo) {
+        return (
+            <RepositoryDetails repo={selectedRepo} onBack={() => setSelectedRepo(null)} />
+        );
+    }
+
+    if (user) {
+        return (
+            <RepositoryList
+                user={user}
+                onRepositoryClick={setSelectedRepo}
+                onFollowersClick={() => console.log("Followers clicked")}
+            />
+        );
+    }
+
+    return <UserSearch onSearch={setUser} />;
+};
 
 export default App;
